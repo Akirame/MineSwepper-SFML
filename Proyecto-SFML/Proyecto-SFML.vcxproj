@@ -76,12 +76,13 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)libs\SFML-2.4.2-x86\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)libs\SFML-2.4.2-x86\include;$(SolutionDir)MemoryLeakDetector\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)libs\SFML-2.4.2-x86\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-audio-d.lib;sfml-system-d.lib;opengl32.lib;freetype.lib;jpeg.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs\SFML-2.4.2-x86\lib;$(SolutionDir)MemoryLeakDetector\lib\Win32\</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-audio-d.lib;sfml-system-d.lib;opengl32.lib;freetype.lib;jpeg.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;vld.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
       <Command>copy $(SolutionDir)libs\SFML-2.4.2-x86\bin\openal32.dll $(OutDir)
@@ -93,7 +94,7 @@ copy $(SolutionDir)libs\SFML-2.4.2-x86\bin\sfml-system-2.dll $(OutDir)
 copy $(SolutionDir)libs\SFML-2.4.2-x86\bin\sfml-system-d-2.dll $(OutDir)
 copy $(SolutionDir)libs\SFML-2.4.2-x86\bin\sfml-window-2.dll $(OutDir)
 copy $(SolutionDir)libs\SFML-2.4.2-x86\bin\sfml-window-d-2.dll $(OutDir)
-</Command>
+xcopy "$(SolutionDir)MemoryLeakDetector\bin\Win32" "$(OutDir)" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -102,11 +103,12 @@ copy $(SolutionDir)libs\SFML-2.4.2-x86\bin\sfml-window-d-2.dll $(OutDir)
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)libs\SFML-2.4.2-x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)libs\SFML-2.4.2-x64\include;$(SolutionDir)MemoryLeakDetector\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SolutionDir)libs\SFML-2.4.2-x64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;sfml-graphics-d.lib;opengl32.lib;freetype.lib;jpeg.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs\SFML-2.4.2-x64\lib;$(SolutionDir)MemoryLeakDetector\lib\Win64\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;sfml-graphics-d.lib;opengl32.lib;freetype.lib;jpeg.lib;winmm.lib;gdi32.lib;openal32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;vld.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
       <Command>copy $(SolutionDir)libs\SFML-2.4.2-x64\bin\openal32.dll $(OutDir)
@@ -117,7 +119,8 @@ copy $(SolutionDir)libs\SFML-2.4.2-x64\bin\sfml-graphics-d-2.dll $(OutDir)
 copy $(SolutionDir)libs\SFML-2.4.2-x64\bin\sfml-system-2.dll $(OutDir)
 copy $(SolutionDir)libs\SFML-2.4.2-x64\bin\sfml-system-d-2.dll $(OutDir)
 copy $(SolutionDir)libs\SFML-2.4.2-x64\bin\sfml-window-2.dll $(OutDir)
-copy $(SolutionDir)libs\SFML-2.4.2-x64\bin\sfml-window-d-2.dll $(OutDir)</Command>
+copy $(SolutionDir)libs\SFML-2.4.2-x64\bin\sfml-window-d-2.dll $(OutDir)
+xcopy "$(SolutionDir)MemoryLeakDetector\bin\Win64" "$(OutDir)" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

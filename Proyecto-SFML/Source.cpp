@@ -2,6 +2,7 @@
 #include <iostream>;
 #include <time.h>
 #include <SFML/Audio.hpp>
+#include "vld.h"
 using namespace sf;
 
 int main()
